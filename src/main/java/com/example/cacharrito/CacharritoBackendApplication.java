@@ -1,4 +1,4 @@
-package com.example.cachorrito;
+package com.example.cacharrito;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
