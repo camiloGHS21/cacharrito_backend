@@ -19,17 +19,17 @@ public class Administrador {
 	    @Column(name = "usuario")
 	    private String usuario;
 	    
-	    @Column(name = "contrasena")
-	    private String contrasena;
+	    @Column(name = "contraseña")
+	    private String contraseña;
 	    
 	  
 	    public Administrador() {
 	    }
 	    
 	
-	    public Administrador(String usuario, String contrasena) {
+	    public Administrador(String usuario, String contraseña) {
 	        this.usuario = usuario;
-	        this.contrasena = contrasena;
+	        this.contraseña = contraseña;
 	    }
 	    
 	    // Getters y setters
@@ -49,11 +49,11 @@ public class Administrador {
 	        this.usuario = usuario;
 	    }
 
-	    public String getContrasena() {
-	        return contrasena;
+	    public String getContraseña() {
+	        return contraseña;
 	    }
 
-	    public void setContrasena(String contrasena) {
-	        this.contrasena = contrasena;
+	    public void setContraseña(String contraseña) {
+	        this.contraseña = contraseña;
 	    }
 	}

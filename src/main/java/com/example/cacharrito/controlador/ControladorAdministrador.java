@@ -18,7 +18,7 @@ public class ControladorAdministrador{
 	  private RepositorioAdministrador repositorio;
 	  
 	  @GetMapping("/verTodos")
-	  public List<Administrador> verTodosLosUsuarrios(){
+	  public List<Administrador> verTodosLosAdmisnitrador(){
 		  return repositorio.findAll();
 	  }
 	  
@@ -45,7 +45,7 @@ public class ControladorAdministrador{
 	  }
    
 	   @PatchMapping("/actualizar")
-	   public ResponseEntity<String> actualizar(@RequestBody Administrador administrador){
+	   public ResponseEntity<String> actualizarAdministrador(@RequestBody Administrador administrador){
 		   try {
 		          repositorio.save(administrador);
 		          return ResponseEntity.ok("Administrador  actualizados correctamente");
