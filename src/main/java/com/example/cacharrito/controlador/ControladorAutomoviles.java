@@ -12,7 +12,7 @@ import com.example.cacharrito.modelo.Automoviles;
 import com.example.cacharrito.repositorio.RepositorioAutomoviles ;
 
 @RestController
-@RequestMapping("/automoviles")
+@RequestMapping("/api/automoviles")
 public class ControladorAutomoviles {
 	
 	@Autowired

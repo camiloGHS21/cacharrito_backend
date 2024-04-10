@@ -3,8 +3,6 @@ package com.example.cacharrito.modelo;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @ Entity
@@ -13,10 +11,6 @@ public class Usuarios {
     @Id
     @Column(name = "cedula")
     private long cedula;
-
-    @OneToMany
-    @JoinColumn(name = "id_reserva")
-    private Reservaciones reservaciones;
 
     @Column(name = "nombre")
     private String nombre;
@@ -34,16 +28,17 @@ public class Usuarios {
 
     public Usuarios() {}
 
-    public Usuarios(Long cedula, Reservaciones reservaciones , String nombre, String apellido, String telefono, String fechaNacimiento) {
-        this.cedula = cedula;
-        this.reservaciones = reservaciones;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.telefono = telefono;
-        this.fechaNacimiento = fechaNacimiento;
-    }
+   
+    public Usuarios(long cedula, String nombre, String apellido, String telefono, String fechaNacimiento) {
+		this.cedula = cedula;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.telefono = telefono;
+		this.fechaNacimiento = fechaNacimiento;
+	}
 
-    // Getters y setters
+
+	// Getters y setters
 
     public Long getCedula() {
         return cedula;
@@ -74,13 +69,12 @@ public class Usuarios {
         return telefono;
     }
 
-    public Reservaciones getReservaciones() {
-		return reservaciones;
+    
+
+	public void setCedula(long cedula) {
+		this.cedula = cedula;
 	}
 
-	public void setReservaciones(Reservaciones reservaciones) {
-		this.reservaciones = reservaciones;
-	}
 
 	public void setTelefono(String telefono) {
         this.telefono = telefono;
