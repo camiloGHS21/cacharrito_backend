@@ -27,6 +27,7 @@ public class Administrador {
 	    	super();
 	    }
 	    
+
 	
 	    // Getters y setters
 	    public Long getIdAdministrador() {
