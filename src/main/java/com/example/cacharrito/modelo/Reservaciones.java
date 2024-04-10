@@ -16,9 +16,14 @@ public class Reservaciones {
    @Column(name="id_de_reserva")
    private Long id_de_reserva;
    
-   @OneToOne()
-   @JoinColumn(name="numero_de_automovil")
-   private Automoviles automoviles;
+   @ManyToOne()
+   @JoinColumn(name = "cedula")
+   private Usuarios usuario;
+   
+   @ManyToOne()
+   @JoinColumn(name="id_destino")
+   private Disponibilidad disponibilidad;
+   
    
    @Column(name="destino")
    private String destino;
@@ -85,24 +90,36 @@ public void setEstado(Boolean estado) {
 	this.estado = estado;
 }
 
-public Automoviles getAutomoviles() {
-	return automoviles;
+
+public Usuarios getUsuario() {
+	return usuario;
 }
 
-public void setAutomoviles(Automoviles automoviles) {
-	this.automoviles = automoviles;
+public void setUsuario(Usuarios usuario) {
+	this.usuario = usuario;
 }
 
-public Reservaciones(Long id_de_reserva, String destino, String hora_de_salida, Date fecha, Long total_a_pagar,
-		Boolean estado, Automoviles automoviles) {
+public Disponibilidad getDisponibilidad() {
+	return disponibilidad;
+}
+
+public void setDisponibilidad(Disponibilidad disponibilidad) {
+	this.disponibilidad = disponibilidad;
+}
+
+public Reservaciones(Long id_de_reserva, Usuarios usuario, Disponibilidad disponibilidad, String destino,
+		String hora_de_salida, Date fecha, Long total_a_pagar, Boolean estado) {
 	this.id_de_reserva = id_de_reserva;
+	this.usuario = usuario;
+	this.disponibilidad = disponibilidad;
 	this.destino = destino;
 	this.hora_de_salida = hora_de_salida;
 	this.fecha = fecha;
 	this.total_a_pagar = total_a_pagar;
 	this.estado = estado;
-	this.automoviles = automoviles;
 }
+
+
    
    
    

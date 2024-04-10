@@ -13,7 +13,7 @@ import com.example.cacharrito.repositorio.RepositorioReservaciones;
 
 
 @RestController
-@RequestMapping("/reservaciones")
+@RequestMapping("/api/reservaciones")
 public class ControladorReservaciones {
 
 	  @Autowired

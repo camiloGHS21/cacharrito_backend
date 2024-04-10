@@ -24,14 +24,11 @@ public class Administrador {
 	    
 	  
 	    public Administrador() {
+	    	super();
 	    }
 	    
+
 	
-	    public Administrador(String usuario, String contraseña) {
-	        this.usuario = usuario;
-	        this.contraseña = contraseña;
-	    }
-	    
 	    // Getters y setters
 	    public Long getIdAdministrador() {
 	        return id_administrador;
@@ -56,4 +53,12 @@ public class Administrador {
 	    public void setContraseña(String contraseña) {
 	        this.contraseña = contraseña;
 	    }
+
+
+		public Administrador(String usuario, String contraseña) {
+			this.usuario = usuario;
+			this.contraseña = contraseña;
+		}
+	    
+	    
 	}
