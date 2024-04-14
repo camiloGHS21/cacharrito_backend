@@ -45,13 +45,5 @@ public class ServicioMiDetallesDeUsuario implements UserDetailsService {
        return repositorioAdministrador.save(usuario);
     }
     
-
-    public boolean authenticate(String username, String password) {
-        Administrador user = repositorioAdministrador.findByUsername(username);
-        if (user != null && user.getContraseña().equals(password)) {
-            return true;
-        }
-        return false;
-    }
 }
 

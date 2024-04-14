@@ -1,5 +1,6 @@
 package com.example.cacharrito.configuracion;
 
+import org.apache.catalina.filters.CorsFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,12 +9,16 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
 import com.example.cacharrito.servicios.ServicioMiDetallesDeUsuario;
 
 @Configuration
 @EnableWebSecurity
 public class ConfiguracionDeSeguridad {
 
+	
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -29,7 +34,7 @@ public class ConfiguracionDeSeguridad {
                 		"/api/reservaciones/verTodos",
                 		"/api/disponibilidad/verTodos",
                 		"/api/automoviles/verTodos",
-                		"/api/disponibilidad/actualizar"
+                		"/api/disponibilidad/actualizar"     		
                 		)
                 .permitAll() // Permite el acceso a cualquier usuario a las rutas bajo /api/public/
                 .anyRequest().authenticated() // Todas las demás solicitudes requieren autenticación

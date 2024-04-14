@@ -8,5 +8,4 @@ import com.example.cacharrito.modelo.Administrador;
 public interface RepositorioAdministrador extends JpaRepository<Administrador,Long> {
    public Administrador findByUsuario(String usuario);
 
-public Administrador findByUsername(String username);
 }
