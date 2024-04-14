@@ -1,7 +1,6 @@
 package com.example.cacharrito.controlador;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,13 +21,7 @@ public class ControladorAutomoviles {
 	public List<Automoviles> verTodosAutomoviles(){
 		return repositorio.findAll();
 	}
-	  
-	 @GetMapping("/buscarId")
-	  public Optional<Automoviles> verAutomovil(@RequestBody Automoviles automovil) {
-		  return repositorio.findById(automovil.getNumero_de_automovil());
-		  
-	  }
-	  
+	 
 	  
 	  @PostMapping("/guardar")
 	  public Automoviles guardarAutomovil(@RequestBody Automoviles automovil ) {

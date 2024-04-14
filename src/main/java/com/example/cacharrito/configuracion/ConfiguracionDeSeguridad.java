@@ -28,8 +28,8 @@ public class ConfiguracionDeSeguridad {
                 		"/api/usuarios/guardar",
                 		"/api/reservaciones/verTodos",
                 		"/api/disponibilidad/verTodos",
-                		"/api/automoviles/verTodos"
-                		
+                		"/api/automoviles/verTodos",
+                		"/api/disponibilidad/actualizar"
                 		)
                 .permitAll() // Permite el acceso a cualquier usuario a las rutas bajo /api/public/
                 .anyRequest().authenticated() // Todas las demás solicitudes requieren autenticación
