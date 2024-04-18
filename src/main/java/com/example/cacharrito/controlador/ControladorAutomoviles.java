@@ -12,12 +12,13 @@ import com.example.cacharrito.repositorio.RepositorioAutomoviles ;
 
 @RestController
 @RequestMapping("/api/automoviles")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ControladorAutomoviles {
 	
 	@Autowired
 	  private RepositorioAutomoviles repositorio;
 	
-	@GetMapping("/verTodos")
+	@GetMapping("/ver_todos")
 	public List<Automoviles> verTodosAutomoviles(){
 		return repositorio.findAll();
 	}

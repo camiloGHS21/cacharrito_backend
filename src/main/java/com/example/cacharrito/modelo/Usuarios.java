@@ -1,8 +1,12 @@
 package com.example.cacharrito.modelo;
 
+
+import java.util.Date;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @ Entity
@@ -11,31 +15,41 @@ public class Usuarios {
     @Id
     @Column(name = "cedula")
     private long cedula;
+    
+   //@OneToOne(mappedBy= "id_de_reserva")
+    //private Reservaciones reservaciones;
 
-    @Column(name = "nombre")
+    @OneToOne
+    @JoinColumn(name = "id_de_reserva")
+    private Reservaciones reservaciones;
+
+
+	public Reservaciones getReservaciones() {
+		return reservaciones;
+	}
+
+
+	public void setReservaciones(Reservaciones reservaciones) {
+		this.reservaciones = reservaciones;
+	}
+
+	@Column(name = "nombre")
     private String nombre;
     
     @Column(name = "apellido")
     private String apellido;
     
     @Column(name = "telefeno")
-    private String telefono;
+    private Long telefono;
 
     @Column(name = "fecha_nacimiento")
-    private String fechaNacimiento;
+    private Date fechaNacimiento;
 
     // Constructor, getters y setters
 
     public Usuarios() {}
 
    
-    public Usuarios(long cedula, String nombre, String apellido, String telefono, String fechaNacimiento) {
-		this.cedula = cedula;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.telefono = telefono;
-		this.fechaNacimiento = fechaNacimiento;
-	}
 
 
 	// Getters y setters
@@ -65,7 +79,7 @@ public class Usuarios {
         this.apellido = apellido;
     }
 
-    public String getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 
@@ -76,15 +90,30 @@ public class Usuarios {
 	}
 
 
-	public void setTelefono(String telefono) {
+	public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
 
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+
+
+	public Usuarios(long cedula, Reservaciones reservaciones, String nombre, String apellido, Long telefono,
+			Date fechaNacimiento) {
+		this.cedula = cedula;
+		this.reservaciones = reservaciones;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.telefono = telefono;
+		this.fechaNacimiento = fechaNacimiento;
+	}
+
+
+    
+    
 }
