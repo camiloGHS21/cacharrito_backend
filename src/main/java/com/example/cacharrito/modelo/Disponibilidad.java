@@ -10,7 +10,7 @@ public class Disponibilidad {
 		super();
 	}
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name="id_disponibilidad")
   private Long id_disponibilidad;
   
@@ -58,8 +58,7 @@ public void setPuestos_disponibles(Long puestos_disponibles) {
 	this.puestos_disponibles = puestos_disponibles;
 }
 
-public Disponibilidad(Long id_disponibilidad, Automoviles automovil, Long valor_a_pagar, Long puestos_disponibles) {
-	this.id_disponibilidad = id_disponibilidad;
+public Disponibilidad( Automoviles automovil, Long valor_a_pagar, Long puestos_disponibles) {
 	this.automovil = automovil;
 	this.valor_a_pagar = valor_a_pagar;
 	this.puestos_disponibles = puestos_disponibles;

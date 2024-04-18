@@ -1,6 +1,8 @@
 package com.example.cacharrito.controlador;
 
+import com.example.cacharrito.modelo.Reservaciones;
 import com.example.cacharrito.modelo.Usuarios;
+import com.example.cacharrito.repositorio.RepositorioReservaciones;
 import com.example.cacharrito.repositorio.RepositorioUsuarios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,29 +10,39 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/api/usuarios")
+@CrossOrigin(origins="http://localhost:4200/")
 public class ControladorUsuarios {
 
 	@Autowired
 	  private RepositorioUsuarios repositorio;
+	
+	@Autowired
+	 private RepositorioReservaciones Reservasrespositorio;
 	  
-	  @GetMapping("/verTodos")
+	  @GetMapping("/ver_todos")
 	  public List<Usuarios> verTodosLosUsuarrios(){
 		  return repositorio.findAll();
 	  }
 	  
-	  @GetMapping("/buscarId")
-	  public Optional<Usuarios> verUsuarios(@RequestBody Usuarios usuario) {
-		  return repositorio.findById(usuario.getCedula());
+	  @PostMapping("/buscar_id")
+	  public List<Reservaciones> verUsuarios(@RequestBody Long id) {
+	      return Reservasrespositorio.findBybuscarUsercedula(id);
+	  }
+	  
+	  @PostMapping("/buscarPorIdAutomovil")
+	  public List<Usuarios> buscarUsuariosPorIdAutomovil(@RequestBody Long IdAutomovil){
+		return repositorio.findByUsuariosAutomovilId(IdAutomovil);
 	  }
 	  
 	  
 	  @PostMapping("/guardar")
 	  public Usuarios guardarUsuarios(@RequestBody  Usuarios  usuario ) {
-		  return repositorio.save(usuario);
+		  Reservaciones reserva = Reservasrespositorio.findById(usuario.getReservaciones().getId_de_reserva()).get();
+		  Usuarios user = new Usuarios(usuario.getCedula(),reserva,usuario.getNombre(),usuario.getApellido(),usuario.getTelefono(),usuario.getFechaNacimiento());
+		  return repositorio.save(user);
 		  
 	  }
 	  

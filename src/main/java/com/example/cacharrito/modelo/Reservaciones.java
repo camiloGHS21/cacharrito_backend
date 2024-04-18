@@ -12,22 +12,21 @@ public class Reservaciones {
 		super();
 	}
    @Id
-   @GeneratedValue(strategy = GenerationType.SEQUENCE)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    @Column(name="id_de_reserva")
    private Long id_de_reserva;
    
-   @ManyToOne()
-   @JoinColumn(name = "cedula")
-   private Usuarios usuario;
+   
    
    @ManyToOne()
-   @JoinColumn(name="id_destino")
+   @JoinColumn(name="id_disponibilidad")
    private Disponibilidad disponibilidad;
    
+   @Column(name="origen")
+   private String origen;
    
    @Column(name="destino")
    private String destino;
-   
    
    @Column(name="hora_de_salida")
    private String hora_de_salida;
@@ -39,9 +38,15 @@ public class Reservaciones {
    private Long total_a_pagar;
    
    @Column(name="estado")
-   private Boolean estado;
+   private String estado;
    
+public String getOrigen() {
+	return origen;
+}
 
+public void setOrigen(String origen) {
+	this.origen = origen;
+}
 public Long getId_de_reserva() {
 	return id_de_reserva;
 }
@@ -82,21 +87,12 @@ public void setTotal_a_pagar(Long total_a_pagar) {
 	this.total_a_pagar = total_a_pagar;
 }
 
-public Boolean getEstado() {
+public String getEstado() {
 	return estado;
 }
 
-public void setEstado(Boolean estado) {
+public void setEstado(String estado) {
 	this.estado = estado;
-}
-
-
-public Usuarios getUsuario() {
-	return usuario;
-}
-
-public void setUsuario(Usuarios usuario) {
-	this.usuario = usuario;
 }
 
 public Disponibilidad getDisponibilidad() {
@@ -107,11 +103,22 @@ public void setDisponibilidad(Disponibilidad disponibilidad) {
 	this.disponibilidad = disponibilidad;
 }
 
-public Reservaciones(Long id_de_reserva, Usuarios usuario, Disponibilidad disponibilidad, String destino,
-		String hora_de_salida, Date fecha, Long total_a_pagar, Boolean estado) {
+public Reservaciones(Long id_de_reserva, Disponibilidad disponibilidad, String destino,
+		String hora_de_salida, Date fecha, Long total_a_pagar, String estado) {
 	this.id_de_reserva = id_de_reserva;
-	this.usuario = usuario;
 	this.disponibilidad = disponibilidad;
+	this.destino = destino;
+	this.hora_de_salida = hora_de_salida;
+	this.fecha = fecha;
+	this.total_a_pagar = total_a_pagar;
+	this.estado = estado;
+}
+
+public Reservaciones(Long id_de_reserva, Disponibilidad disponibilidad, String origen, String destino,
+		String hora_de_salida, Date fecha, Long total_a_pagar, String estado) {
+	this.id_de_reserva = id_de_reserva;
+	this.disponibilidad = disponibilidad;
+	this.origen = origen;
 	this.destino = destino;
 	this.hora_de_salida = hora_de_salida;
 	this.fecha = fecha;

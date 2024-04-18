@@ -11,7 +11,7 @@ public class Automoviles {
 	}
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="numero_de_automovil")
 	private Long numero_de_automovil;
 	

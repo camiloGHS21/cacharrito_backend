@@ -44,5 +44,6 @@ public class ServicioMiDetallesDeUsuario implements UserDetailsService {
    
        return repositorioAdministrador.save(usuario);
     }
+    
 }
 
